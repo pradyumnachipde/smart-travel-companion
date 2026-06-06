@@ -5,6 +5,9 @@ const protect = require("../middleware/authMiddleware");
 const {
   createTrip,
   getMyTrips,
+  getTripById,
+  updateTrip,
+  deleteTrip,
 } = require("../controllers/tripController");
 
 const router = express.Router();
@@ -12,5 +15,11 @@ const router = express.Router();
 router.post("/", protect, createTrip);
 
 router.get("/", protect, getMyTrips);
+
+router.get("/:id", protect, getTripById);
+
+router.put("/:id", protect, updateTrip);
+
+router.delete("/:id", protect, deleteTrip);
 
 module.exports = router;
